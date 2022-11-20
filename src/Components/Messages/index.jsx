@@ -17,17 +17,17 @@ const Messages = (props) => {
         <Table striped bordered hover style={{ width: '100%' }}>
             <thead>
                 <tr>
-                    <th style={{ width: '25%' }}></th>
-                    <th style={{ width: '70%', maxWidth: '40vw', overflow: 'hidden' }}></th>
-                    <th style={{}}></th>
+                    <th style={{ width: '15%', paddingLeft: '1rem', minWidth: '150px' }}></th>
+                    <th style={{ width: '80%', maxWidth: '40vw', overflow: 'hidden' }}></th>
+                    <th style={{ minWidth: '150px'}}></th>
                 </tr>
             </thead>
             <tbody>
                 {messages.map((msg, idx) => {
                     return (
                         <tr key={idx} >
-                            <td>{msg.name}:</td>
-                            <td style={{ width: '70%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word' }}>{msg.content}</td>
+                            <th style={{ width: '15%', paddingLeft: '1rem', minWidth: '150px', textAlign: 'right' }}>{msg.name}:</th>
+                            <td style={{ width: '80%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word' }}>{msg.content}</td>
                             <td>{moment(msg.timestamp).fromNow()}</td>
                         </tr>
                     );
