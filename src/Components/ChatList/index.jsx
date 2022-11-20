@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Spinner, Table, Form, InputGroup, Modal, Alert, Nav } from 'react-bootstrap';
+import { Button, Spinner, Table, Form, InputGroup, Modal, Alert, Nav, Navbar, Container } from 'react-bootstrap';
 import './list.css';
 import axios from 'axios';
 
@@ -7,6 +7,7 @@ const ChatList = (props) => {
     const { displayName, setPage, setChat, version } = props;
     const [rooms, setRooms] = useState(null);
     const [show, setShow] = useState(false);
+    const [sidePanel, setSidePanel] = useState(false);
     const newNameRef = useRef();
 
     let panelStyle = {
@@ -59,6 +60,10 @@ const ChatList = (props) => {
         });
     }
 
+    const openSidePanel = () => {
+
+    }
+
     useEffect(() => {
         if (rooms == null) {
             fetchRooms();
@@ -67,6 +72,41 @@ const ChatList = (props) => {
 
     return (
         <>
+
+            {version != "standalone" &&
+                <>
+                    <div style={{
+                        position: 'absolute', top: '0', left: '0', width: '100%',
+                        height: '3.5rem', background: 'black', zIndex: '5', display: 'flex', alignItems: 'center'
+                    }}>
+                        <Button onClick={() => setSidePanel(old => !old)}>{sidePanel ? "Close" : "Open"}</Button>
+                    </div>
+
+                    <div
+                        className={(sidePanel ? "spOpen sp" : "spClosed sp")}
+                    >
+                        <Button variant="primary" onClick={handleShow} style={{
+                            cursor: 'pointer', fontSize: '0.75rem',
+                            width: '80%',
+                        }}>
+                            New Room
+                        </Button>
+
+                        {rooms != null && rooms.map((room, idx) => {
+                            return (
+                                <Button
+                                    variant={"secondary"}
+                                    onClick={() => handleRoomSelection(room.name)}
+                                    style={{ cursor: 'pointer', fontSize: '0.75rem', width: '80%' }}
+                                >{room.name}</Button>
+                            );
+                        })}
+                    </div>
+                </>
+            }
+
+
+
             {version == "standalone" &&
                 <div style={{ width: '80%' }}>
                     <h1 style={{ fontSize: '1rem' }}>Hi {displayName}</h1>
@@ -93,31 +133,6 @@ const ChatList = (props) => {
                         </tbody>
                     </Table>
                 </div>
-            }
-
-            {version != "standalone" &&
-                <Nav className="sidebar bg-dark" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-                    <div className="sidebar-sticky"></div>
-
-                    <Nav.Item style={{ width: '90%'}}>
-                        <Button variant="primary" onClick={handleShow} style={{ cursor: 'pointer', fontSize: '0.75rem', width: '4rem', marginRight: '0.5rem' }}>
-                            New Room
-                        </Button>
-                    </Nav.Item>
-
-                    {rooms != null && rooms.map((room, idx) => {
-                        return (
-                            <Nav.Item key={idx} style={{ width: '90%' }}>
-                                <Button
-                                    variant={"secondary"}
-                                    onClick={() => handleRoomSelection(room.name)}
-                                    style={{ cursor: 'pointer', fontSize: '0.75rem', width: '4rem', marginRight: '0.5rem' }}
-                                >{room.name}</Button>
-                            </Nav.Item>
-                        );
-                    })}
-
-                </Nav>
             }
 
             <Modal show={show} onHide={handleClose}>

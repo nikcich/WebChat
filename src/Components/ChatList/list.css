@@ -8,7 +8,8 @@
     padding: 48px 0 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
-#sidebar-wrapper{
+
+#sidebar-wrapper {
     min-height: 100vh !important;
     width: 100vw;
     margin-left: -1rem;
@@ -17,6 +18,7 @@
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
 }
+
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
@@ -25,4 +27,30 @@
 #page-content-wrapper {
     min-width: 0;
     width: 100%;
+}
+
+.sp {
+    transition: width 200ms ease-in-out, left 200ms ease-in-out;
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    width: 5rem;
+    height: calc(100% - 3.5rem);
+    background: black;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.spOpen {
+    width: 50vw;
+    left: 0;
+}
+
+.spClosed {
+    width: 5rem;
+    left: -5rem;
 }
