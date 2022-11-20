@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import Messages from '../Messages';
 import { Button, Spinner, Table, Form, InputGroup } from 'react-bootstrap';
 
-const socket = io("ws://localhost:3000");
+const socket = io("ws://173.255.196.121:2022");
 
 function ChatPage(props) {
   const { displayName, setPage, setChat, selectedChat } = props;

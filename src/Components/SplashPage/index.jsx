@@ -18,7 +18,7 @@ const SplashPage = (props) => {
 
             axios({
                 method: 'post',
-                url: 'http://localhost:3000/signup',
+                url: 'http://173.255.196.121:2022/signup',
                 headers: {},
                 data: {
                     name: nm,
@@ -48,7 +48,7 @@ const SplashPage = (props) => {
 
             axios({
                 method: 'post',
-                url: 'http://localhost:3000/login',
+                url: 'http://173.255.196.121:2022/login',
                 headers: {},
                 data: {
                     name: nm,

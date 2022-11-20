@@ -24,7 +24,7 @@ const ChatList = (props) => {
 
         axios({
             method: 'post',
-            url: 'http://localhost:3000/createroom',
+            url: 'http://173.255.196.121:2022/createroom',
             headers: {},
             data: {
                 name: newNameRef.current.value, // This is the body part
@@ -42,7 +42,7 @@ const ChatList = (props) => {
     }
 
     const fetchRooms = () => {
-        fetch("http://localhost:3000/chatlist").then((res) => res.json()).then((res) => {
+        fetch("http://173.255.196.121:2022/chatlist").then((res) => res.json()).then((res) => {
             setRooms(res);
         });
     }
