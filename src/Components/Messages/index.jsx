@@ -28,7 +28,7 @@ const Messages = (props) => {
                         <tr key={idx} >
                             <td>{msg.name}:</td>
                             <td style={{width: '70%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word'}}>{msg.content}</td>
-                            <td>{moment(msg.time).fromNow()}</td>
+                            <td>{moment(msg.timestamp).fromNow()}</td>
                         </tr>
                     );
                 })}
