@@ -1,0 +1,20 @@
+{
+    "yoel": {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "avatar": "",
+      "password": ""
+    },
+    "nikolas": {
+      "name": "Nikolas",
+      "email": "nikolas@example.com",
+      "avatar": "",
+      "password": ""
+    },
+    "bob": {
+      "name": "Bob",
+      "email": "bob@example.com",
+      "avatar": "",
+      "password": ""
+    }
+  }

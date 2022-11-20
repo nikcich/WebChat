@@ -1,0 +1,122 @@
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:rgb(211, 211, 211);
+  height: 100vh;
+  width: 100vw;
+}
+
+.messageContainer {
+  display: 'flex';
+  flex-direction: column;
+}
+
+.sendButton {
+  margin-left: -3rem;
+  width: 1rem;
+  height: 2.4rem;
+  text-align: center;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: rgb(0, 0, 0, 0);
+  transition: background 200ms ease-in-out;
+}
+
+.sendButton>h1 {
+  width: 2rem;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.sendButton:hover {
+  background: rgb(43, 43, 43);
+}
+
+.messageInput {
+  height: 2rem;
+  width: 300px;
+  border-radius: 2rem;
+  padding: 0.5rem;
+
+}
+
+.messageInput {
+  border: none;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  width: 316px;
+}
+
+.controlContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 75vw;
+  height: 80vh;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  overflow-y: scroll;
+}
+
+.messageBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 100%;
+  background: rgb(43, 43, 43);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.messageName {
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+}
+
+.messageContent {
+  width: 85vw;
+  text-align: left;
+  padding-right: 1rem;
+  font-size: 1.25rem;
+}
+
+
+.messageTime {
+  height: 1.5rem;
+  width: 40vw;
+  font-size: 0.6rem;
+  position: relative;
+  top: -3.6rem;
+  left: 48vw;
+  text-align: right;
+}
+
+.messageDetailBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+}
