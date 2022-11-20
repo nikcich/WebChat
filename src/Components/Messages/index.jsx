@@ -14,29 +14,8 @@ const Messages = (props) => {
         container.current.scrollTo(0, container.current.scrollHeight);
     }, [messages]);
 
-    return (<div ref={container} style={{ height: '80%', width: '100%' }}>
-        {/* <Table striped bordered hover style={{ width: '100%' }}>
-            <thead>
-                <tr>
-                    <th style={{ width: '15%', paddingLeft: '1rem', minWidth: '150px' }}></th>
-                    <th style={{ width: '80%', maxWidth: '40vw', overflow: 'hidden' }}></th>
-                    <th style={{ minWidth: '150px'}}></th>
-                </tr>
-            </thead>
-            <tbody>
-                {messages.map((msg, idx) => {
-                    return (
-                        <tr key={idx} >
-                            <th style={{ width: '15%', paddingLeft: '1rem', minWidth: '150px', textAlign: 'right' }}>{msg.name}:</th>
-                            <td style={{ width: '80%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word' }}>{msg.content}</td>
-                            <td>{moment(msg.timestamp).fromNow()}</td>
-                        </tr>
-                    );
-                })}
-            </tbody>
-        </Table> */}
-
-        <div style={{
+    return (<div  style={{ height: '80%', width: '100%' }}>
+        <div ref={container} style={{
             height: '100%', width: '100%', display: 'flex', gap: '0.5rem', overflowY: 'scroll', flexWrap: 'wrap'
         }}>
             {messages.map((msg, idx) => {
