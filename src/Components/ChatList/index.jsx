@@ -11,7 +11,7 @@ const ChatList = (props) => {
     let panelStyle = {
         height: '100vh', width: '15vw', 
         overflow: 'hidden', position: 'absolute', left: '0',
-        minWidth: '150px', zIndex: '2',
+        minWidth: '80px', zIndex: '2', padding: '0.5rem'
     }
 
     if(version == "standalone"){
@@ -68,17 +68,17 @@ const ChatList = (props) => {
 
     return (
         <div style={panelStyle} className={(version == "standalone" ? "" : "listPanel")}>
-            <h1>Hello there {displayName}</h1>
+            <h1 style={{fontSize: '1rem'}}>Hi {displayName}</h1>
             <br />
             <Button variant="primary" onClick={handleShow}>
-                Create Chat Room
+                New Room
             </Button>
             <br />
             <br />
             <Table striped bordered hover style={{ width: '100%' }}>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Rooms</th>
                     </tr>
                 </thead>
                 <tbody>

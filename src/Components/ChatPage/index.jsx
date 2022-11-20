@@ -80,7 +80,7 @@ function ChatPage(props) {
         </>}
 
       {isConnected &&
-        <div className="controlContainer">
+        <div className="controlContainer" >
           <Button onClick={() => handleExit()}>Exit Room</Button>
           <p>Connected: {'' + isConnected}</p>
           <Messages socket={socket} messages={messages} />
