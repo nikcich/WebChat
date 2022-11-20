@@ -3,10 +3,23 @@ import { Button, Spinner, Table, Form, InputGroup, Modal, Alert } from 'react-bo
 import axios from 'axios';
 
 const ChatList = (props) => {
-    const { displayName, setPage, setChat } = props;
+    const { displayName, setPage, setChat, version } = props;
     const [rooms, setRooms] = useState(null);
     const [show, setShow] = useState(false);
     const newNameRef = useRef();
+
+    let panelStyle = {
+        height: '100vh', width: '15vw', 
+        overflow: 'hidden', position: 'absolute', left: '0',
+        minWidth: '150px', zIndex: '2',
+    }
+
+    if(version == "standalone"){
+        console.log("YEET");
+        panelStyle ={
+
+        }
+    }
 
     const [error, setError] = useState(false);
 
@@ -54,14 +67,15 @@ const ChatList = (props) => {
     });
 
     return (
-        <>
+        <div style={panelStyle} className={(version == "standalone" ? "" : "listPanel")}>
             <h1>Hello there {displayName}</h1>
             <br />
             <Button variant="primary" onClick={handleShow}>
                 Create Chat Room
             </Button>
             <br />
-            <Table striped bordered hover style={{ width: '90vw' }}>
+            <br />
+            <Table striped bordered hover style={{ width: '100%' }}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -100,7 +114,7 @@ const ChatList = (props) => {
 
                 </Form>
             </Modal>
-        </>
+        </div>
     );
 }
 

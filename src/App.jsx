@@ -13,11 +13,15 @@ function App() {
   return (
     <div className="App">
       {page == '/' ? (
-        <SplashPage setPage={setPage} setDisplayName={setDisplayName}/>
+        <SplashPage setPage={setPage} setDisplayName={setDisplayName} />
       ) : page == '/list' ? (
-        <ChatList displayName={displayName} setPage={setPage} setChat={setChat} />
+        <ChatList displayName={displayName} setPage={setPage} setChat={setChat} version={"standalone"} />
       ) : page == '/chatroom' ? (
-        <ChatPage displayName={displayName} setPage={setPage} setChat={setChat} selectedChat={selectedChat}/>
+        <>
+          <ChatList displayName={displayName} setPage={setPage} setChat={setChat} version={"sidepanel"} />
+          <ChatPage displayName={displayName} setPage={setPage} setChat={setChat} selectedChat={selectedChat} />
+        </>
+
       ) : (
         <>
 

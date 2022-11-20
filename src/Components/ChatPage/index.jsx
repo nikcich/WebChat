@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import io from 'socket.io-client';
 import Messages from '../Messages';
 import { Button, Spinner, Table, Form, InputGroup } from 'react-bootstrap';
+import './chat.css';
 
 const socket = io("ws://173.255.196.121:2022");
 
@@ -70,7 +71,7 @@ function ChatPage(props) {
   }
 
   return (
-    <div className="App">
+    <div className="ChatPage">
       {!isConnected &&
         <>
 
@@ -82,9 +83,7 @@ function ChatPage(props) {
         <div className="controlContainer">
           <Button onClick={() => handleExit()}>Exit Room</Button>
           <p>Connected: {'' + isConnected}</p>
-
           <Messages socket={socket} messages={messages} />
-
           <Form onSubmit={(e) => sendMessage(e)} style={{ width: '75vw' }}>
             <InputGroup hasValidation>
               <Form.Control type="text" required isInvalid={false} placeholder="Enter a message" ref={inputRef} />
