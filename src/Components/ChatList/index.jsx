@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Spinner, Table, Form, InputGroup, Modal, Alert } from 'react-bootstrap';
+import { Button, Spinner, Table, Form, InputGroup, Modal, Alert, Nav } from 'react-bootstrap';
+import './list.css';
 import axios from 'axios';
 
 const ChatList = (props) => {
@@ -9,14 +10,14 @@ const ChatList = (props) => {
     const newNameRef = useRef();
 
     let panelStyle = {
-        height: '100vh', width: '15vw', 
-        overflow: 'hidden', position: 'absolute', left: '0',
-        minWidth: '80px', zIndex: '2', padding: '0.5rem'
+        // height: '100vh', width: '15vw',
+        // overflow: 'hidden', position: 'absolute', left: '0',
+        // minWidth: '80px', zIndex: '2', padding: '0.5rem'
     }
 
-    if(version == "standalone"){
+    if (version == "standalone") {
         console.log("YEET");
-        panelStyle ={
+        panelStyle = {
             minWidth: '80%'
         }
     }
@@ -67,30 +68,59 @@ const ChatList = (props) => {
     });
 
     return (
-        <div style={panelStyle} className={(version == "standalone" ? "" : "listPanel")}>
-            <h1 style={{fontSize: '1rem'}}>Hi {displayName}</h1>
-            <br />
-            <Button variant="primary" onClick={handleShow}>
-                New Room
-            </Button>
-            <br />
-            <br />
-            <Table striped bordered hover style={{ width: '100%' }}>
-                <thead>
-                    <tr>
-                        <th>Rooms</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <>
+            {version == "standalone" &&
+                <div style={{ width: '80%' }}>
+                    <h1 style={{ fontSize: '1rem' }}>Hi {displayName}</h1>
+                    <br />
+                    <Button variant="primary" onClick={handleShow}>
+                        New Room
+                    </Button>
+                    <br />
+                    <br />
+                    <Table striped bordered hover style={{ width: '100%' }}>
+                        <thead>
+                            <tr>
+                                <th>Rooms</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rooms != null && rooms.map((room, idx) => {
+                                return (
+                                    <tr key={idx} onClick={() => handleRoomSelection(room.name)} style={{ cursor: 'pointer' }}>
+                                        <td>{room.name}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </Table>
+                </div>
+            }
+
+            {version != "standalone" &&
+                <Nav Nav className="sidebar bg-dark" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                    <div className="sidebar-sticky"></div>
+
+                    <Nav.Item style={{ width: '90%'}}>
+                        <Button variant="primary" onClick={handleShow} style={{ cursor: 'pointer', fontSize: '0.75rem', width: '4rem', marginRight: '0.5rem' }}>
+                            New Room
+                        </Button>
+                    </Nav.Item>
+
                     {rooms != null && rooms.map((room, idx) => {
                         return (
-                            <tr key={idx} onClick={() => handleRoomSelection(room.name)} style={{ cursor: 'pointer' }}>
-                                <td>{room.name}</td>
-                            </tr>
+                            <Nav.Item key={idx} style={{ width: '90%' }}>
+                                <Button
+                                    variant={"secondary"}
+                                    onClick={() => handleRoomSelection(room.name)}
+                                    style={{ cursor: 'pointer', fontSize: '0.75rem', width: '4rem', marginRight: '0.5rem' }}
+                                >{room.name}</Button>
+                            </Nav.Item>
                         );
                     })}
-                </tbody>
-            </Table>
+
+                </Nav>
+            }
 
             <Modal show={show} onHide={handleClose}>
 
@@ -111,10 +141,9 @@ const ChatList = (props) => {
                     {error != false &&
                         <Alert variant={'danger'}>{error}</Alert>
                     }
-
                 </Form>
             </Modal>
-        </div>
+        </>
     );
 }
 

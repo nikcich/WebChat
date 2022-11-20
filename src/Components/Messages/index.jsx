@@ -17,8 +17,8 @@ const Messages = (props) => {
         <Table striped bordered hover style={{ width: '100%' }}>
             <thead>
                 <tr>
-                    <th style={{width: '10%'}}></th>
-                    <th style={{width: '70%', maxWidth: '40vw', overflow: 'hidden'}}></th>
+                    <th style={{ width: '25%' }}></th>
+                    <th style={{ width: '70%', maxWidth: '40vw', overflow: 'hidden' }}></th>
                     <th style={{}}></th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@ const Messages = (props) => {
                     return (
                         <tr key={idx} >
                             <td>{msg.name}:</td>
-                            <td style={{width: '70%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word'}}>{msg.content}</td>
+                            <td style={{ width: '70%', maxWidth: '40vw', overflow: 'hidden', overflowWrap: 'break-word' }}>{msg.content}</td>
                             <td>{moment(msg.timestamp).fromNow()}</td>
                         </tr>
                     );
