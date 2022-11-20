@@ -17,7 +17,7 @@ const ChatList = (props) => {
     if(version == "standalone"){
         console.log("YEET");
         panelStyle ={
-
+            minWidth: '80%'
         }
     }
 
