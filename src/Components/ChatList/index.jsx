@@ -16,7 +16,6 @@ const ChatList = (props) => {
     }
 
     if (version == "standalone") {
-        console.log("YEET");
         panelStyle = {
             minWidth: '80%'
         }
@@ -34,7 +33,6 @@ const ChatList = (props) => {
 
     const handleCreate = async (e) => {
         e.preventDefault();
-        console.log(newNameRef.current.value);
 
         axios({
             method: 'post',
@@ -98,7 +96,7 @@ const ChatList = (props) => {
             }
 
             {version != "standalone" &&
-                <Nav Nav className="sidebar bg-dark" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                <Nav className="sidebar bg-dark" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
                     <div className="sidebar-sticky"></div>
 
                     <Nav.Item style={{ width: '90%'}}>

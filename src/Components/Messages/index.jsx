@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import moment from 'moment/moment';
 import { Button, Spinner, Table, Form, InputGroup } from 'react-bootstrap';
+import './msg.css';
 
 const Messages = (props) => {
     // const [messages, setMessages] = useState([]);
@@ -13,8 +14,8 @@ const Messages = (props) => {
         container.current.scrollTo(0, container.current.scrollHeight);
     }, [messages]);
 
-    return (<div ref={container} className="messageContainer">
-        <Table striped bordered hover style={{ width: '100%' }}>
+    return (<div ref={container} style={{ height: '80%', width: '100%' }}>
+        {/* <Table striped bordered hover style={{ width: '100%' }}>
             <thead>
                 <tr>
                     <th style={{ width: '15%', paddingLeft: '1rem', minWidth: '150px' }}></th>
@@ -33,7 +34,33 @@ const Messages = (props) => {
                     );
                 })}
             </tbody>
-        </Table>
+        </Table> */}
+
+        <div style={{
+            height: '100%', width: '100%', display: 'flex', gap: '0.5rem', overflowY: 'scroll', flexWrap: 'wrap'
+        }}>
+            {messages.map((msg, idx) => {
+                return (
+                    <div key={idx} className="messageItem">
+                        <div style={{ height: '2rem', width: '100%', display: 'flex', marginTop: '0.5rem' }}>
+                            <div style={{ height: '100%', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                                <h3 style={{ marginLeft: '0.5rem' }}>{msg.name}</h3>
+                            </div>
+                            <div style={{ height: '100%', width: '50%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                                <h3 style={{ marginRight: '0.5rem', fontSize: '1.1rem' }}>{moment(msg.timestamp).fromNow()}</h3>
+                            </div>
+                        </div>
+
+                        <p style={{
+                            overflowWrap: 'break-word', fontSize: '1.1rem', marginLeft: '1rem',
+                            textAlign: 'left', width: '100%',
+                        }}>
+                            {msg.content}
+                        </p>
+                    </div>
+                );
+            })}
+        </div>
 
     </div>)
 }

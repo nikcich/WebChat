@@ -28,8 +28,8 @@ function ChatPage(props) {
 
   useEffect(() => {
 
-    if (socket.connected && roomJoined == false) {
-      setRoomJoined(true);
+    if ((socket.connected && roomJoined == false) || roomJoined != selectedChat) {
+      setRoomJoined(selectedChat);
       socket.emit('join', { room: selectedChat });
     }
 
@@ -64,7 +64,7 @@ function ChatPage(props) {
       socket.off('loadMessages');
       socket.off('newMessage');
     };
-  }, [messages]);
+  }, [messages, selectedChat]);
 
   const sendPing = () => {
     socket.emit('ping');
